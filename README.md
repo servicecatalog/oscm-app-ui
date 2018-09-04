@@ -1,6 +1,8 @@
-# OscmAppUi
+# oscm-app-ui
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
+## Build status
+
+[![Build status](https://travis-ci.org/servicecatalog/oscm-app-ui.svg?branch=master)](https://travis-ci.org/servicecatalog/oscm-app-ui)
 
 ## Development server
 
