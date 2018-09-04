@@ -20,6 +20,5 @@ before_script:
   - npm install -g --silent @angular/cli
 
 script:
-  - ng build --prod
   - npm run test -- --watch=false --progress=false --browsers=ChromeHeadlessCI
   - npm run e2e -- --protractor-config=./e2e/protractor-ci.conf.js
