@@ -28,6 +28,7 @@ import {
   MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
+import {RouterModule} from '@angular/router';
 
 const SHARED_DEPENDENCIES = [
   CommonModule,
@@ -57,6 +58,8 @@ const SHARED_DEPENDENCIES = [
   MatSelectModule,
   MatButtonToggleModule,
   MatSnackBarModule,
+  MatSidenavModule,
+  RouterModule,
 ];
 
 @NgModule({
