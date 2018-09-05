@@ -1,12 +1,13 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav mode="side" [(opened)]="opened">
-    <ul>
-      <li>Home</li>
-      <li>APP Config</li>
-      <li>APP Config</li>
-      <li>APP Config</li>
-      <li>APP Config</li>
-    </ul>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let link of links">
+        <a matLine href="#">{{ link }}</a>
+        <button mat-icon-button (click)="showInfo(link)">
+        <mat-icon>info</mat-icon>
+     </button>
+  </mat-list-item>
+</mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <ng-content></ng-content>

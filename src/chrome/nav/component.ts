@@ -6,6 +6,7 @@ import {Component} from '@angular/core';
 })
 export class NavComponent {
   public opened = true;
+  links: string[] = ['Home', 'Organization config', 'Instances', 'VMware', 'Azure etc.'];
 
   toggle(): void {
     this.opened = !this.opened;

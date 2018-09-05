@@ -26,7 +26,8 @@ import {
   MatTableModule,
   MatTabsModule,
   MatToolbarModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatListModule
 } from '@angular/material';
 import {RouterModule} from '@angular/router';
 
@@ -59,6 +60,7 @@ const SHARED_DEPENDENCIES = [
   MatButtonToggleModule,
   MatSnackBarModule,
   MatSidenavModule,
+  MatListModule,
   RouterModule,
 ];
 
