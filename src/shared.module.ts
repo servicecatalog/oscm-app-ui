@@ -30,6 +30,7 @@ import {
   MatListModule
 } from '@angular/material';
 import {RouterModule} from '@angular/router';
+import {ServicesModule} from "./common/services/module";
 
 const SHARED_DEPENDENCIES = [
   CommonModule,
@@ -62,6 +63,7 @@ const SHARED_DEPENDENCIES = [
   MatSidenavModule,
   MatListModule,
   RouterModule,
+  ServicesModule,
 ];
 
 @NgModule({

@@ -17,9 +17,9 @@ export interface Instance {
   id: number;
   controllerId: string;
   instanceId: string;
-  attributes: Array<InstanceAttribute>;
+  attributes: InstanceAttribute[];
   organizationName: string;
-  parameters: Array<InstanceParameter>;
+  parameters: InstanceParameter[];
   provisioningMsg: string;
   provisioningStatus: string | ProvisioningStatus;
   referenceId: string;

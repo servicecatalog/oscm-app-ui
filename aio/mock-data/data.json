@@ -1,0 +1,12 @@
+{
+  "instances": [
+    {"id": 1, "organizationName": "test-org"},
+    {"id": 2, "organizationName": "fujitsu"},
+    {"id": 3, "organizationName": "google"},
+    {"id": 4, "organizationName": "redhat"},
+    {"id": 5, "organizationName": "loodse"},
+    {"id": 6, "organizationName": "asus"},
+    {"id": 7, "organizationName": "msi"},
+    {"id": 8, "organizationName": "intel"}
+  ]
+}
