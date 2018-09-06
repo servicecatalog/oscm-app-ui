@@ -3,11 +3,11 @@ import {Component} from '@angular/core';
 class Link {
   public icon: string;
   public route: string;
-  public description: string;
+  public label: string;
 
-  constructor(route: string, description: string, icon = 'info') {
+  constructor(route: string, label: string, icon = 'info') {
     this.route = route;
-    this.description = description;
+    this.label = label;
     this.icon = icon;
   }
 }
@@ -19,8 +19,10 @@ class Link {
 })
 export class NavComponent {
   public collapsed = false;
-  links: Link[] = [
-    new Link('home', 'Home', 'home'),
+
+  homeLink: Link = new Link('home', 'Home', 'home');
+
+  adminLinks: Link[] = [
     new Link('a', 'Organization config'),
     new Link('instances', 'Instances'),
   ];
