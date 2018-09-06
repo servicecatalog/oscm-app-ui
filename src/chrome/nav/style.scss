@@ -1,7 +1,13 @@
-.active-link {
-  background: rgba(50, 50, 50, 0.15) !important;
+.mat-nav-list {
+  padding-left: 8px;
+}
 
-  mat-icon {
-    color: cadetblue;
+.mat-list-item {
+  &:hover {
+    background: rgba(0, 0, 0, 0.1) !important;
   }
+}
+
+.mat-list-item, .mat-list-item-content {
+  height: 40px !important;
 }
