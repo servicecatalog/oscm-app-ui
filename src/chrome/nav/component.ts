@@ -39,10 +39,10 @@ export class NavComponent {
   ];
 
   controllerLinks: Link[] = [
-    new Link('aws', 'AWS', 'home'),
-    new Link('azure', 'Azure'),
-    new Link('openstack', 'OpenStack'),
-    new Link('vmware', 'VMware')
+    new Link('aws', 'AWS', 'extension'),
+    new Link('azure', 'Azure', 'extension'),
+    new Link('openstack', 'OpenStack', 'extension'),
+    new Link('vmware', 'VMware', 'extension')
   ];
 
   toggle(): void {
