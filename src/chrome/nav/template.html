@@ -1,18 +1,20 @@
 <mat-sidenav-container style="background: #f2f2f2">
-  <mat-sidenav #sidenav mode="side" [opened]="true" style="background: #f2f2f2; width: 280px">
-    
+  <mat-sidenav mode="side"
+               [opened]="true"
+               style="background: #f2f2f2"
+               [@collapse]="collapsed ? 'collapsed' : 'visible'">
     <mat-nav-list>
       <a mat-list-item
          routerLink="home"
          routerLinkActive="active-link"
          class="app-nav-list-item">
         <mat-icon mat-list-icon color="primary">home</mat-icon>
-        <a matLine *ngIf="!collapsed">Home</a>
+        <a matLine>Home</a>
       </a>
     </mat-nav-list>
 
-    <mat-divider></mat-divider>
-    <div class="app-nav-header">ADMINISTRATION</div>
+    <mat-divider style="margin-left: 8px"></mat-divider>
+    <div class="app-nav-header" *ngIf="!collapsed">ADMINISTRATION</div>
     <mat-nav-list>
       <a mat-list-item
          *ngFor="let link of adminLinks"
@@ -20,12 +22,12 @@
          routerLinkActive="active-link"
          class="app-nav-list-item">
         <mat-icon mat-list-icon color="primary">{{ link.icon }}</mat-icon>
-        <a matLine *ngIf="!collapsed">{{ link.label }}</a>
+        <a matLine>{{ link.label }}</a>
       </a>
     </mat-nav-list>
 
-    <mat-divider></mat-divider>
-    <div class="app-nav-header">CONTROLLER CONFIGURATION</div>
+    <mat-divider style="margin-left: 8px"></mat-divider>
+    <div class="app-nav-header" *ngIf="!collapsed">CONTROLLER CONFIGURATION</div>
     <mat-nav-list>
       <a mat-list-item
          *ngFor="let link of controllerLinks"
@@ -33,12 +35,12 @@
          routerLinkActive="active-link"
          class="app-nav-list-item">
         <mat-icon mat-list-icon color="primary">{{ link.icon }}</mat-icon>
-        <a matLine *ngIf="!collapsed">{{ link.label }}</a>
+        <a matLine>{{ link.label }}</a>
       </a>
     </mat-nav-list>
 
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content [ngClass]="{'app-collapsed': collapsed}">
     <ng-content></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>
