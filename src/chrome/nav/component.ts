@@ -20,10 +20,8 @@ class Link {
 export class NavComponent {
   public collapsed = false;
 
-  homeLink: Link = new Link('home', 'Home', 'home');
-
   adminLinks: Link[] = [
-    new Link('a', 'Organization config'),
+    new Link('orgconf', 'Organization config', 'settings'),
     new Link('instances', 'Instances'),
   ];
 
@@ -31,7 +29,7 @@ export class NavComponent {
     new Link('aws', 'AWS', 'home'),
     new Link('azure', 'Azure'),
     new Link('openstack', 'OpenStack'),
-    new Link('VMware', 'VMware')
+    new Link('vmware', 'VMware')
   ];
 
   toggle(): void {
