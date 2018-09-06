@@ -1,10 +1,10 @@
 <mat-toolbar color="primary">
   <button mat-icon-button (click)="nav.toggle()" style="margin-right: 16px">
-    <i class="material-icons" aria-label="Menu icon">menu</i>
+    <mat-icon aria-label="Menu icon">menu</mat-icon>
   </button>
   <span>OSCM Asynchronous Provisioning Platform</span>
 </mat-toolbar>
-<!--TODO Sidebar-->
+
 <app-nav #nav>
   <router-outlet></router-outlet>
 </app-nav>
