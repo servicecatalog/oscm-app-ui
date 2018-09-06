@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 class Link {
   public icon: string;
@@ -16,13 +17,25 @@ class Link {
   selector: 'app-nav',
   templateUrl: 'template.html',
   styleUrls: ['style.scss'],
+  animations: [
+    trigger('collapse', [
+      state('visible', style({
+        'width': '*',
+      })),
+      state('collapsed', style({
+        'width': '64px',
+      })),
+      transition('visible => collapsed', animate('250ms ease-in-out', style({'width': '64px'}))),
+      transition('collapsed => visible', animate('250ms ease-in-out', style({'width': '*'}))),
+    ]),
+  ],
 })
 export class NavComponent {
   public collapsed = false;
 
   adminLinks: Link[] = [
-    new Link('orgconf', 'Organization config', 'settings'),
-    new Link('instances', 'Instances'),
+    new Link('orgconf', 'Organization config', 'build'),
+    new Link('instances', 'Instances', 'cloud'),
   ];
 
   controllerLinks: Link[] = [
