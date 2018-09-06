@@ -23,8 +23,13 @@ export class NavComponent {
     new Link('home', 'Home', 'home'),
     new Link('a', 'Organization config'),
     new Link('instances', 'Instances'),
-    new Link('b', 'VMware'),
-    new Link('c', 'Azure etc.')
+  ];
+
+  controllerLinks: Link[] = [
+    new Link('aws', 'AWS', 'home'),
+    new Link('azure', 'Azure'),
+    new Link('openstack', 'OpenStack'),
+    new Link('VMware', 'VMware')
   ];
 
   toggle(): void {
