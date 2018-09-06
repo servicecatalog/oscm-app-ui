@@ -1,10 +1,12 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button (click)="nav.toggle()" style="margin-right: 16px">
-    <mat-icon aria-label="Menu icon">menu</mat-icon>
-  </button>
-  <span>OSCM Asynchronous Provisioning Platform</span>
-</mat-toolbar>
+<div class="app-container">
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="nav.toggle()" style="margin-right: 16px">
+      <mat-icon aria-label="Menu icon">menu</mat-icon>
+    </button>
+    <span>OSCM Asynchronous Provisioning Platform</span>
+  </mat-toolbar>
 
-<app-nav #nav>
-  <router-outlet></router-outlet>
-</app-nav>
+  <app-nav #nav style="height: 100%">
+    <router-outlet></router-outlet>
+  </app-nav>
+</div>
