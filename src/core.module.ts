@@ -7,6 +7,7 @@ import {ChromeComponent} from './chrome/component';
 import {routes} from './router.config';
 import {HomeModule} from './home/module';
 import {ChromeModule} from './chrome/module';
+import {InstancesModule} from './instances/module';
 
 @NgModule({
   declarations: [],
@@ -16,6 +17,7 @@ import {ChromeModule} from './chrome/module';
 
     ChromeModule,
     HomeModule,
+    InstancesModule,
 
     RouterModule.forRoot(routes)
   ],

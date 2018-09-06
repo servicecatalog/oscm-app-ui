@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-instances',
   templateUrl: './template.html'
 })
-export class HomeComponent {
-  title = 'Home';
+export class InstancesComponent {
+  title = 'Instances';
 }
