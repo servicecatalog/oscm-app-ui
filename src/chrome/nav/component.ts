@@ -34,7 +34,7 @@ export class NavComponent {
   public collapsed = false;
 
   adminLinks: Link[] = [
-    new Link('orgconf', 'Organization config', 'build'),
+    new Link('config', 'Config', 'build'),
     new Link('instances', 'Instances', 'cloud'),
   ];
 
