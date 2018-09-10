@@ -3,10 +3,12 @@ import {ComponentsModule} from '../common/components/module';
 import {SharedModule} from '../shared.module';
 
 import {InstancesComponent} from './component';
+import {InstanceDetailComponent} from './detail/component';
 
 @NgModule({
   declarations: [
-    InstancesComponent
+    InstancesComponent,
+    InstanceDetailComponent,
   ],
   imports: [
     ComponentsModule,

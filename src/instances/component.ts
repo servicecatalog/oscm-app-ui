@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {delay} from 'rxjs/operators';
 import {InstanceService} from '../common/services/instance';
 import {Instance, ProvisioningStatus} from '../typings/api';
 
@@ -11,7 +12,9 @@ export class InstancesComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  displayedColumns: string[] = ['instanceId', 'subscriptionId', 'controllerId', 'organizationName', 'attributes', 'parameters', 'status', 'requestTime'];
+  isInitialized = false;
+
+  displayedColumns: string[] = ['instanceId', 'subscriptionId', 'controllerId', 'organizationName', 'status', 'requestTime'];
   dataSource: MatTableDataSource<Instance>;
 
   instances: Instance[] = [];
@@ -19,11 +22,14 @@ export class InstancesComponent implements OnInit {
   constructor(private _instanceService: InstanceService) {}
 
   ngOnInit(): void {
-    this._instanceService.instance().subscribe(instances => {
+    this._instanceService.instances()
+      .pipe(delay(1000))
+      .subscribe(instances => {
       this.instances = instances;
       this.dataSource = new MatTableDataSource<Instance>(this.instances);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.isInitialized = true;
     });
   }
 

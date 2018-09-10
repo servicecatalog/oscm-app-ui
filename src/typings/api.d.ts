@@ -1,4 +1,3 @@
-
 export type ProvisioningStatus = 'WAITING_FOR_SYSTEM_CREATION' | 'COMPLETED';
 
 export interface InstanceAttribute {

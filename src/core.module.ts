@@ -1,14 +1,14 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router';
 import {ChromeComponent} from './chrome/component';
-import {routes} from './router.config';
-import {HomeModule} from './home/module';
 import {ChromeModule} from './chrome/module';
-import {InstancesModule} from './instances/module';
 import {ConfigModule} from './config/module';
+import {HomeModule} from './home/module';
+import {InstancesModule} from './instances/module';
+import {routes} from './router.config';
 
 @NgModule({
   declarations: [],

@@ -1,0 +1,57 @@
+@import '../../../styles/abstracts/mixins';
+@import '../../../styles/abstracts/variables';
+
+:host {
+  .mat-card {
+    min-width: 100 * $baseline-grid;
+    padding: 0;
+  }
+
+  .mat-card-title {
+    margin: 0 0 0 0;
+  }
+
+  .mat-card-footer {
+    display: inline;
+    margin: 0;
+  }
+}
+
+.app-card-header:hover {
+  cursor: pointer;
+}
+
+.app-card-actions {
+  display: block;
+  padding: $baseline-grid (2 * $baseline-grid);
+}
+
+.app-card-toggle {
+  cursor: pointer;
+  margin-right: (3 * $baseline-grid);
+  outline: none;
+}
+
+.app-card-content {
+  margin: 0;
+  padding: 2 * $baseline-grid;
+}
+
+.app-card-content-table {
+  padding: 0;
+}
+
+.app-card-title {
+  font-size: $title-font-size-base;
+  margin-right: $baseline-grid;
+  padding: $baseline-grid 0 $baseline-grid (2 * $baseline-grid);
+}
+
+.app-card-description {
+  font-size: $subhead-font-size-base-lg;
+}
+
+.app-card-footer {
+  font-size: $footer-font-size-base;
+  padding: 0 (2 * $baseline-grid) $baseline-grid;
+}

@@ -1,0 +1,45 @@
+<app-card [initialized]="isInitialized">
+  <div title>{{ instance?.instanceId }}</div>
+  <div content fxLayout="row wrap">
+    <app-property>
+      <div key>Controller</div>
+      <div value>{{instance?.controllerId}}</div>
+    </app-property>
+    <app-property>
+      <div key>Organization</div>
+      <div value>{{instance?.organizationName}}</div>
+    </app-property>
+    <app-property>
+      <div key>Attributes</div>
+      <div value>
+        <app-chips [list]="instance?.attributes"></app-chips>
+      </div>
+    </app-property>
+    <app-property>
+      <div key>Parameters</div>
+      <div value>
+        <app-chips [list]="instance?.parameters"></app-chips>
+      </div>
+    </app-property>
+    <app-property>
+      <div key>Provisioning Status</div>
+      <div value>{{getStatus(instance?.provisioningStatus)}}</div>
+    </app-property>
+    <app-property>
+      <div key>Subscription ID</div>
+      <div value>{{instance?.subscriptionId}}</div>
+    </app-property>
+    <app-property>
+      <div key>Reference ID</div>
+      <div value>{{instance?.referenceId}}</div>
+    </app-property>
+    <app-property>
+      <div key>Created At</div>
+      <div value>{{instance?.requestTime}}</div>
+    </app-property>
+    <app-property>
+      <div key>Provisioning Message</div>
+      <div value>{{instance?.provisioningMsg}}</div>
+    </app-property>
+  </div>
+</app-card>

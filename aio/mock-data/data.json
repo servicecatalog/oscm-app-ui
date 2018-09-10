@@ -1,21 +1,25 @@
 {
   "instances": [
     {
-      "instanceId": 1,
+      "id": "instance-hg81g81",
+      "instanceId": "instance-hg81g81",
       "subscriptionId": 671831,
       "organizationName": "Amazon",
       "controllerId": "AWS",
       "provisioningStatus": "WAITING_FOR_SYSTEM_CREATION",
+      "provisioningMsg": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "requestTime": "2018-09-04T12:20+04:00",
       "attributes": [
         {"key": "attr-key", "value": "attr-val"}
       ],
       "parameters": [
         {"key": "param-key", "value": "param-val"}
-      ]
+      ],
+      "referenceId": "5183f1h8fh1"
     },
     {
-      "instanceId": 2,
+      "id": "instance-th2r2et",
+      "instanceId": "instance-th2r2et",
       "subscriptionId": 51231,
       "organizationName": "Fujitsu",
       "controllerId": "Azure",
@@ -23,7 +27,8 @@
       "requestTime": "2018-07-15T08:20+06:00"
     },
     {
-      "instanceId": 3,
+      "id": "instance-13g3g1g",
+      "instanceId": "instance-13g3g1g",
       "subscriptionId": 63412,
       "organizationName": "Google",
       "controllerId": "Azure",
@@ -31,7 +36,8 @@
       "requestTime": "2018-09-10T08:20+02:00"
     },
     {
-      "instanceId": 4,
+      "id": "instance-13grb1eds",
+      "instanceId": "instance-13grb1eds",
       "subscriptionId": 734141,
       "organizationName": "RedHat",
       "controllerId": "OpenStack",
@@ -39,7 +45,8 @@
       "requestTime": "2018-09-10T08:25+02:00"
     },
     {
-      "instanceId": 5,
+      "id": "instance-13gt64ht",
+      "instanceId": "instance-13gt64ht",
       "subscriptionId": 345321,
       "organizationName": "ASUS",
       "controllerId": "VMWare",
@@ -47,7 +54,8 @@
       "requestTime": "2018-08-09T08:20+01:00"
     },
     {
-      "instanceId": 6,
+      "id": "instance-g1t4gwf",
+      "instanceId": "instance-g1t4gwf",
       "subscriptionId": 637425,
       "organizationName": "MSI",
       "controllerId": "VMWare",
@@ -55,7 +63,8 @@
       "requestTime": "2018-09-08T06:35+00:00"
     },
     {
-      "instanceId": 7,
+      "id": "instance-r1r1f34",
+      "instanceId": "instance-r1r1f34",
       "subscriptionId": 834642,
       "organizationName": "Intel",
       "controllerId": "OpenStack",
@@ -63,7 +72,8 @@
       "requestTime": "2018-09-10T08:20+02:00"
     },
     {
-      "instanceId": 8,
+      "id": "instance-4yth2",
+      "instanceId": "instance-4yth2",
       "subscriptionId": 3513526,
       "organizationName": "Loodse",
       "controllerId": "AWS",

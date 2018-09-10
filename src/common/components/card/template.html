@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-title *ngIf="withTitle"
+                  fxLayoutAlign=" center">
+    <div class="app-card-title"
+         fxFlex>
+      <ng-content select="[title]"></ng-content>
+    </div>
+  </mat-card-title>
+
+  <div>
+    <mat-divider class="app-on-top"></mat-divider>
+
+    <mat-card-content>
+      <div *ngIf="initialized; else loading"
+           class="app-card-content"
+           [ngClass]="{'app-card-content-table': role === 'table'}">
+        <ng-content select="[content]"></ng-content>
+      </div>
+      <ng-template #loading>
+        <div style="padding: 16px 0;">
+          <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        </div>
+      </ng-template>
+    </mat-card-content>
+  </div>
+</mat-card>

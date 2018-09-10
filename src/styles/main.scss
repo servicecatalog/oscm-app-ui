@@ -24,3 +24,58 @@ body {
     font-weight: 500 !important;
   }
 }
+
+//////////////////////////////////////////
+// Overrides of Angular Material styles //
+//////////////////////////////////////////
+
+.mat-progress-spinner {
+  margin: 0 auto;
+}
+
+.mat-card {
+  margin: 2.5 * $baseline-grid;
+
+  .mat-card-title {
+    margin-bottom: $baseline-grid;
+  }
+}
+
+.mat-table {
+  width: 100%;
+}
+
+.mat-header-row,
+.mat-row {
+  min-height: (5 * $baseline-grid) !important;
+  padding: 0 (2 * $baseline-grid) !important;
+}
+
+.mat-header-cell {
+  font-size: $body-font-size-base;
+
+  &:first-child {
+    padding: 0 0 0 (2 * $baseline-grid) !important;
+  }
+
+  &:last-child {
+    padding: 0 !important;
+  }
+}
+
+.mat-cell {
+  margin: (.5 * $baseline-grid) 0 !important;
+
+  &:last-child {
+    padding-right: 0 !important;
+  }
+
+  &:first-child {
+    padding-left: 2 * $baseline-grid !important;
+  }
+}
+
+// TODO: Move colors to some theming files
+.app-muted {
+  color: #a2a2a2;
+}

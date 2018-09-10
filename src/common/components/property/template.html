@@ -1,0 +1,11 @@
+<div class="app-property-container"
+     fxLayout="column">
+  <div class="app-property-label app-muted"
+       fxLayout="row"
+       fxLayoutAlign=" center">
+    <ng-content select="[key]"></ng-content>
+  </div>
+  <div class="app-property-value">
+    <ng-content select="[value]"></ng-content>
+  </div>
+</div>

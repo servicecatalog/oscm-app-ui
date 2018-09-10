@@ -13,7 +13,11 @@ export class InstanceService extends BaseApi {
     super();
   }
 
-  instance(): Observable<Instance[]> {
+  instances(): Observable<Instance[]> {
     return this._http.get<Instance[]>(this._url);
+  }
+
+  instance(id: string): Observable<Instance> {
+    return this._http.get<Instance>(`${this._url}/${id}`);
   }
 }

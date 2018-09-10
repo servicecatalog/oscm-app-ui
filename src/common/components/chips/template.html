@@ -1,6 +1,6 @@
-<mat-chip-list *ngIf="list.length > 0">
+<mat-chip-list *ngIf="list?.length > 0">
   <mat-chip *ngFor="let elem of list">
     {{ elem.key }}: {{ elem.value }}
   </mat-chip>
 </mat-chip-list>
-<div *ngIf="list.length == 0">-</div>
+<div *ngIf="list?.length == 0">-</div>
