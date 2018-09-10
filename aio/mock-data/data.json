@@ -1,12 +1,74 @@
 {
   "instances": [
-    {"id": 1, "organizationName": "test-org"},
-    {"id": 2, "organizationName": "fujitsu"},
-    {"id": 3, "organizationName": "google"},
-    {"id": 4, "organizationName": "redhat"},
-    {"id": 5, "organizationName": "loodse"},
-    {"id": 6, "organizationName": "asus"},
-    {"id": 7, "organizationName": "msi"},
-    {"id": 8, "organizationName": "intel"}
+    {
+      "instanceId": 1,
+      "subscriptionId": 671831,
+      "organizationName": "Amazon",
+      "controllerId": "AWS",
+      "provisioningStatus": "WAITING_FOR_SYSTEM_CREATION",
+      "requestTime": "2018-09-04T12:20+04:00",
+      "attributes": [
+        {"key": "attr-key", "value": "attr-val"}
+      ],
+      "parameters": [
+        {"key": "param-key", "value": "param-val"}
+      ]
+    },
+    {
+      "instanceId": 2,
+      "subscriptionId": 51231,
+      "organizationName": "Fujitsu",
+      "controllerId": "Azure",
+      "provisioningStatus": "COMPLETED",
+      "requestTime": "2018-07-15T08:20+06:00"
+    },
+    {
+      "instanceId": 3,
+      "subscriptionId": 63412,
+      "organizationName": "Google",
+      "controllerId": "Azure",
+      "provisioningStatus": "COMPLETED",
+      "requestTime": "2018-09-10T08:20+02:00"
+    },
+    {
+      "instanceId": 4,
+      "subscriptionId": 734141,
+      "organizationName": "RedHat",
+      "controllerId": "OpenStack",
+      "provisioningStatus": "WAITING_FOR_SYSTEM_CREATION",
+      "requestTime": "2018-09-10T08:25+02:00"
+    },
+    {
+      "instanceId": 5,
+      "subscriptionId": 345321,
+      "organizationName": "ASUS",
+      "controllerId": "VMWare",
+      "provisioningStatus": "WAITING_FOR_SYSTEM_CREATION",
+      "requestTime": "2018-08-09T08:20+01:00"
+    },
+    {
+      "instanceId": 6,
+      "subscriptionId": 637425,
+      "organizationName": "MSI",
+      "controllerId": "VMWare",
+      "provisioningStatus": "COMPLETED",
+      "requestTime": "2018-09-08T06:35+00:00"
+    },
+    {
+      "instanceId": 7,
+      "subscriptionId": 834642,
+      "organizationName": "Intel",
+      "controllerId": "OpenStack",
+      "provisioningStatus": "COMPLETED",
+      "requestTime": "2018-09-10T08:20+02:00"
+    },
+    {
+      "instanceId": 8,
+      "subscriptionId": 3513526,
+      "organizationName": "Loodse",
+      "controllerId": "AWS",
+      "provisioningStatus": "COMPLETED",
+      "requestTime": "2018-09-10T08:20+02:00"
+    }
   ]
 }

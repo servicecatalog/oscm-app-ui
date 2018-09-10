@@ -1,7 +1,5 @@
-export enum ProvisioningStatus {
-  WAITING_FOR_SYSTEM_CREATION = 1,
-  COMPLETED = 2,
-}
+
+export type ProvisioningStatus = 'WAITING_FOR_SYSTEM_CREATION' | 'COMPLETED';
 
 export interface InstanceAttribute {
   id: number;
@@ -11,6 +9,8 @@ export interface InstanceAttribute {
 
 export interface InstanceParameter {
   id: number;
+  key: string;
+  value: string;
 }
 
 export interface Instance {
