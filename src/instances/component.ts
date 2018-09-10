@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {delay} from 'rxjs/operators';
 import {InstanceService} from '../common/services/instance';
 import {Instance, ProvisioningStatus} from '../typings/api';
 
@@ -23,7 +22,6 @@ export class InstancesComponent implements OnInit {
 
   ngOnInit(): void {
     this._instanceService.instances()
-      .pipe(delay(1000))
       .subscribe(instances => {
       this.instances = instances;
       this.dataSource = new MatTableDataSource<Instance>(this.instances);
