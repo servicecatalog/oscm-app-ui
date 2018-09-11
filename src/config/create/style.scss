@@ -1,0 +1,8 @@
+@import '../../styles/abstracts/mixins';
+@import '../../styles/abstracts/variables';
+
+:host {
+  .mat-form-field {
+    margin-right: 2 * $baseline-grid;
+  }
+}

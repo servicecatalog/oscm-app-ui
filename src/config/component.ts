@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material';
 import {ConfigurationService} from '../common/services/configuration';
 import {Configuration} from '../typings/api';
+import {CreateConfigDialogComponent} from './create/dialog';
 
 @Component({
   selector: 'app-config',
@@ -9,7 +11,7 @@ import {Configuration} from '../typings/api';
 export class ConfigComponent implements OnInit {
   orgControllersMap = new Map<string, string[]>();
 
-  constructor(private _configurationService: ConfigurationService) {}
+  constructor(private readonly dialog_: MatDialog, private _configurationService: ConfigurationService) {}
 
   ngOnInit(): void {
     this._configurationService.configurations().subscribe(configurations => {
@@ -26,5 +28,13 @@ export class ConfigComponent implements OnInit {
           this.orgControllersMap.get(configuration.organizationId).concat(configuration.controllerId));
       }
     });
+  }
+
+  create() {
+    this.dialog_.open(CreateConfigDialogComponent, {width: '600px'})
+      .afterClosed()
+      .subscribe((result) => {
+        console.log(result);
+      });
   }
 }
