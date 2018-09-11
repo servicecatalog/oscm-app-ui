@@ -37,3 +37,9 @@ export interface Configuration {
   controllerId: string;
   organizationId: string;
 }
+
+export interface ConfigurationSettings {
+  id: number;
+  key: string;
+  value: string;
+}

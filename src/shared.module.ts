@@ -13,6 +13,7 @@ import {
   MatGridListModule,
   MatIconModule,
   MatInputModule,
+  MatListModule,
   MatMenuModule,
   MatPaginatorModule,
   MatProgressBarModule,
@@ -27,11 +28,9 @@ import {
   MatTableModule,
   MatTabsModule,
   MatToolbarModule,
-  MatTooltipModule,
-  MatListModule
+  MatTooltipModule
 } from '@angular/material';
 import {RouterModule} from '@angular/router';
-import {ComponentsModule} from './common/components/module';
 import {ServicesModule} from './common/services/module';
 
 const SHARED_DEPENDENCIES = [

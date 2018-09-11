@@ -80,5 +80,37 @@
       "provisioningStatus": "COMPLETED",
       "requestTime": "2018-09-10T08:20+02:00"
     }
+  ],
+  "configurations": [
+    {
+      "id": 1,
+      "description": "Azure Configuration for org1",
+      "controllerId": "ess.azure",
+      "organizationId": "e561ka43"
+    },
+    {
+      "id": 2,
+      "description": "Azure Configuration for org1",
+      "controllerId": "ess.aws",
+      "organizationId": "e561ka43"
+    },
+    {
+      "id": 3,
+      "description": "Azure Configuration for org1",
+      "controllerId": "ess.vmware",
+      "organizationId": "e561ka43"
+    },
+    {
+      "id": 4,
+      "description": "Openstack Configuration for org1",
+      "controllerId": "ess.openstack",
+      "organizationId": "e561ka43"
+    },
+    {
+      "id": 5,
+      "description": "Azure Configuration for org2",
+      "controllerId": "ess.azure",
+      "organizationId": "gj518gj4"
+    }
   ]
 }

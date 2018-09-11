@@ -1,5 +1,21 @@
-<mat-card style="margin: 30px">
-  <mat-card-title>{{ title }}</mat-card-title>
-</mat-card>
+<div fxLayout="row wrap">
+  <app-card *ngFor="let organizationId of orgControllersMap.keys()">
+    <div title>Organization ({{organizationId}})</div>
+    <div content>
+      <app-property>
+        <div key>Configured controllers</div>
+        <div value>
+          <ng-container *ngFor="let controllerId of orgControllersMap.get(organizationId); last as last">
+            {{controllerId}}<ng-container *ngIf="!last">,</ng-container>
+          </ng-container>
+        </div>
+      </app-property>
+    </div>
+  </app-card>
+</div>
 
-
+<!--<div fxFlex fxLayout=" end">-->
+  <!--<button mat-fab>-->
+    <!--<mat-icon aria-label="Add configuration">add</mat-icon>-->
+  <!--</button>-->
+<!--</div>-->
