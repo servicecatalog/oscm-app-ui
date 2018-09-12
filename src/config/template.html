@@ -1,18 +1,24 @@
-<div fxLayout="row wrap">
-  <app-card *ngFor="let organizationId of orgControllersMap.keys()">
+<div fxLayout="column wrap" *ngIf="isInitialized; else loading">
+  <app-card *ngFor="let organizationId of orgControllersMap?.keys()">
     <div title>Organization ({{organizationId}})</div>
     <div content>
       <app-property>
         <div key>Configured controllers</div>
         <div value>
-          <ng-container *ngFor="let controllerId of orgControllersMap.get(organizationId); last as last">
-            {{controllerId}}<ng-container *ngIf="!last">,</ng-container>
+          <ng-container *ngFor="let controllerId of orgControllersMap?.get(organizationId); last as last">
+            {{toControllerName(controllerId)}}<ng-container *ngIf="!last">,</ng-container>
           </ng-container>
         </div>
       </app-property>
     </div>
   </app-card>
 </div>
+
+<ng-template #loading>
+  <div style="padding: 16px 0;">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+</ng-template>
 
 <button mat-fab class="app-fab" (click)="create()">
   <mat-icon aria-label="Add configuration">add</mat-icon>

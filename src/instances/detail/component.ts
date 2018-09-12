@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {InstanceService} from '../../common/services/instance';
+import {InstanceService} from '../../common/services/api/instance';
+import {TranslationService} from '../../common/services/translation';
 import {Instance, ProvisioningStatus} from '../../typings/api';
 
 @Component({
@@ -11,7 +12,9 @@ export class InstanceDetailComponent implements OnInit {
   public instance: Instance;
   public isInitialized = false;
 
-  constructor(private _instanceService: InstanceService, private _route: ActivatedRoute) {}
+  constructor(private _instanceService: InstanceService,
+              private _route: ActivatedRoute,
+              private _translationService: TranslationService) {}
 
   ngOnInit(): void {
     this.instance = {instanceId: this._route.snapshot.params.instanceId} as Instance;
@@ -23,11 +26,6 @@ export class InstanceDetailComponent implements OnInit {
   }
 
   getStatus(status: ProvisioningStatus): string {
-    switch (status) {
-      case 'WAITING_FOR_SYSTEM_CREATION':
-        return 'Waiting';
-      case 'COMPLETED':
-        return 'Completed';
-    }
+    return this._translationService.translate(status);
   }
 }

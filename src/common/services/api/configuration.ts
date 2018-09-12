@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {ServicesModule} from './module';
-import {BaseApi} from './api';
-import {Observable} from 'rxjs';
-import {Configuration} from '../../typings/api';
 import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Configuration} from '../../../typings/api';
+import {ServicesModule} from '../module';
+import {BaseApi} from './api';
 
 @Injectable({providedIn: ServicesModule})
 export class ConfigurationService extends BaseApi {

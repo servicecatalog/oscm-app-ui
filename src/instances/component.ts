@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {InstanceService} from '../common/services/instance';
+import {InstanceService} from '../common/services/api/instance';
+import {TranslationService} from '../common/services/translation';
 import {Instance, ProvisioningStatus} from '../typings/api';
 
 @Component({
@@ -18,7 +19,8 @@ export class InstancesComponent implements OnInit {
 
   instances: Instance[] = [];
 
-  constructor(private _instanceService: InstanceService) {}
+  constructor(private _instanceService: InstanceService,
+              private _translationService: TranslationService) {}
 
   ngOnInit(): void {
     this._instanceService.instances()
@@ -32,11 +34,6 @@ export class InstancesComponent implements OnInit {
   }
 
   getStatus(status: ProvisioningStatus): string {
-    switch (status) {
-      case 'WAITING_FOR_SYSTEM_CREATION':
-        return 'Waiting';
-      case 'COMPLETED':
-        return 'Completed';
-    }
+    return this._translationService.translate(status);
   }
 }

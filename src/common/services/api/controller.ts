@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {ServicesModule} from './module';
+import {ServicesModule} from '../module';
 import {BaseApi} from './api';
 import {Observable} from 'rxjs';
-import {Controller} from '../../typings/api';
+import {Controller} from '../../../typings/api';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 
