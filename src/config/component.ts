@@ -1,49 +1,68 @@
-import {HttpErrorResponse} from '@angular/common/http';
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {MatDialog, MatSnackBar, MatSnackBarConfig} from '@angular/material';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatDialog, MatPaginator, MatTableDataSource} from '@angular/material';
 import {ConfigurationService} from '../common/services/api/configuration';
+import {SnackbarService} from '../common/services/snackbar';
 import {TranslationService} from '../common/services/translation';
-import {Configuration, ResponseError} from '../typings/api';
+import {Configuration} from '../typings/api';
 import {CreateConfigDialogComponent} from './create/dialog';
+
+class ConfigurationView {
+  organizationId: string;
+  controllers: string[];
+}
 
 @Component({
   selector: 'app-config',
   templateUrl: './template.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfigComponent implements OnInit {
-  orgControllersMap = new Map<string, string[]>();
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  configurations: ConfigurationView[] = [];
+  dataSource: MatTableDataSource<ConfigurationView> = new MatTableDataSource<ConfigurationView>();
   isInitialized = false;
 
   constructor(private readonly _dialog: MatDialog,
               private _configurationService: ConfigurationService,
               private _translationService: TranslationService,
-              private _cdr: ChangeDetectorRef,
-              private _snackbar: MatSnackBar) {}
+              private _snacbkbar: SnackbarService) {}
 
   ngOnInit(): void {
     this._configurationService.configurations().subscribe(configurations => {
-      this._initOrgControllerMap(configurations);
+      configurations.forEach(config => {
+        this._addConfiguration(config);
+      });
+
+      this.dataSource.paginator = this.paginator;
       this.isInitialized = true;
-      this._cdr.detectChanges();
     });
   }
 
-  private _initOrgControllerMap(configurations: Configuration[]): void {
-    configurations.forEach(configuration => {
-      this._addConfiguration(configuration);
+  private _findIndex(config: Configuration) {
+    let idx = -1;
+
+    this.configurations.forEach((configuration, index) => {
+      if (configuration.organizationId === config.organizationId) {
+        idx = index;
+        return;
+      }
     });
+
+    return idx;
   }
 
-  private _addConfiguration(configuration: Configuration) {
-    if (!this.orgControllersMap.has(configuration.organizationId)) {
-      this.orgControllersMap.set(configuration.organizationId, [configuration.controllerId]);
+  private _addConfiguration(config: Configuration): void {
+    const idx = this._findIndex(config);
+    if (idx < 0) {
+      this.configurations.push({
+        organizationId: config.organizationId,
+        controllers: [config.controllerId],
+      } as ConfigurationView);
     } else {
-      this.orgControllersMap.set(configuration.organizationId,
-        this.orgControllersMap.get(configuration.organizationId).concat(configuration.controllerId));
+      this.configurations[idx].controllers.push(config.controllerId);
     }
 
-    this._cdr.detectChanges();
+    this.dataSource.data = this.configurations;
   }
 
   create() {
@@ -53,11 +72,7 @@ export class ConfigComponent implements OnInit {
         this._configurationService.create(config)
           .subscribe(result => {
             this._addConfiguration(result);
-          }, (err: HttpErrorResponse) => {
-            const apiError = err.error as ResponseError;
-            this._snackbar.open(apiError.errorMessage,
-              'Close',
-              {duration: 5000} as MatSnackBarConfig);
+            this._snacbkbar.open('Configuration saved successfully');
           });
       });
   }

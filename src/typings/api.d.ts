@@ -46,7 +46,7 @@ export interface ConfigurationSettings {
   value: string;
 }
 
-export interface ResponseError {
+export interface ApiResponseError {
   errorMessage: string;
   timestamp: string | Date;
 }
