@@ -10,6 +10,7 @@ import {ConfigModule} from './config/module';
 import {HomeModule} from './home/module';
 import {InstancesModule} from './instances/module';
 import {routes} from './router.config';
+import { ControllerModule } from 'controller/module';
 
 @NgModule({
   declarations: [],
@@ -21,6 +22,7 @@ import {routes} from './router.config';
     HomeModule,
     InstancesModule,
     ConfigModule,
+    ControllerModule,
 
     RouterModule.forRoot(routes)
   ],

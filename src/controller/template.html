@@ -1,0 +1,27 @@
+<app-card [initialized]="isInitialized">
+  <div title>{{controllerId}}</div>
+  <div content fxLayout="row wrap">
+    <app-property>
+      <div key>Configuration ID</div>
+      <div value>{{configuration.id}}</div>
+    </app-property>
+    <app-property>
+      <div key>Description</div>
+      <div value>{{configuration.description}}</div>
+    </app-property>
+    <app-property>
+      <div key>Controller ID</div>
+      <div value>{{configuration.controllerId}}</div>
+    </app-property>
+    <app-property>
+      <div key>Organization ID</div>
+      <div value>{{configuration.organizationId}}</div>
+    </app-property>
+    <app-property fxFlex="100">
+      <div key>Configuration Settings</div>
+      <div value>
+        <app-chips [list]="configurationSettings"></app-chips>
+      </div>
+    </app-property>
+  </div>
+</app-card>

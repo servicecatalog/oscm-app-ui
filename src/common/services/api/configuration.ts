@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {Configuration} from '../../../typings/api';
+import {Configuration, ConfigurationSettings} from '../../../typings/api';
 import {ServicesModule} from '../module';
 import {BaseApi} from './api';
 
@@ -19,6 +19,10 @@ export class ConfigurationService extends BaseApi {
 
   configuration(id: string): Observable<Configuration> {
     return this._http.get<Configuration>(`${this._url}/${id}`);
+  }
+
+  configurationSettings(id: string): Observable<ConfigurationSettings[]> {
+    return this._http.get<ConfigurationSettings[]>(`${this._url}/${id}/settings`);
   }
 
   create(config: Configuration): Observable<Configuration> {
