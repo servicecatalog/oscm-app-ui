@@ -7,7 +7,7 @@ export class TranslationService {
     ['WAITING_FOR_SYSTEM_CREATION', 'Waiting'],
     ['COMPLETED', 'Completed'],
     ['ess.vmware', 'VMWare'],
-    ['ess.openstack', 'Openstack'],
+    ['ess.openstack', 'OpenStack'],
     ['ess.azure', 'Azure'],
     ['ess.aws', 'AWS'],
   ]);
