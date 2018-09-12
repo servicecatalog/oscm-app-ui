@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
   MatButtonModule,
   MatButtonToggleModule,
@@ -67,6 +67,8 @@ const SHARED_DEPENDENCIES = [
 
   FlexLayoutModule,
   RouterModule,
+  ReactiveFormsModule,
+
   ServicesModule,
 ];
 

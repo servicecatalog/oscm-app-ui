@@ -45,3 +45,8 @@ export interface ConfigurationSettings {
   key: string;
   value: string;
 }
+
+export interface ResponseError {
+  errorMessage: string;
+  timestamp: string | Date;
+}

@@ -20,4 +20,8 @@ export class ConfigurationService extends BaseApi {
   configuration(id: string): Observable<Configuration> {
     return this._http.get<Configuration>(`${this._url}/${id}`);
   }
+
+  create(config: Configuration): Observable<Configuration> {
+    return this._http.post<Configuration>(this._url, config);
+  }
 }
