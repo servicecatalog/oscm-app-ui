@@ -36,4 +36,8 @@ export class InstancesComponent implements OnInit {
   getStatus(status: ProvisioningStatus): string {
     return this._translationService.translate(status);
   }
+
+  getControllerName(controllerId: string): string {
+    return this._translationService.translate(controllerId);
+  }
 }

@@ -4,12 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:proxy": "concurrently \"ng serve --proxy-config aio/proxy.conf.json\" \"npm run mock:server\"",
+    "start:proxy": "ng serve --proxy-config aio/proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "mock:server": "json-server --watch aio/mock-data/data.json"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -44,7 +43,6 @@
     "concurrently": "^4.0.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
-    "json-server": "^0.14.0",
     "karma": "^3.0.0",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.0",

@@ -14,7 +14,7 @@
       </ng-container>
       <ng-container [matColumnDef]="displayedColumns[2]">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Controller</th>
-        <td mat-cell *matCellDef="let instance"> {{instance.controllerId}}</td>
+        <td mat-cell *matCellDef="let instance"> {{getControllerName(instance.controllerId)}}</td>
       </ng-container>
       <ng-container [matColumnDef]="displayedColumns[3]">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Organization</th>

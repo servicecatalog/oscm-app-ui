@@ -9,7 +9,7 @@ import {Instance, ProvisioningStatus} from '../../typings/api';
   templateUrl: 'template.html'
 })
 export class InstanceDetailComponent implements OnInit {
-  public instance: Instance;
+  public instance: Instance = {} as Instance;
   public isInitialized = false;
 
   constructor(private _instanceService: InstanceService,
@@ -17,8 +17,7 @@ export class InstanceDetailComponent implements OnInit {
               private _translationService: TranslationService) {}
 
   ngOnInit(): void {
-    this.instance = {instanceId: this._route.snapshot.params.instanceId} as Instance;
-    this._instanceService.instance(this.instance.instanceId)
+    this._instanceService.instance(this._route.snapshot.params.instanceId)
       .subscribe(instance => {
       this.instance = instance;
       this.isInitialized = true;
@@ -27,5 +26,9 @@ export class InstanceDetailComponent implements OnInit {
 
   getStatus(status: ProvisioningStatus): string {
     return this._translationService.translate(status);
+  }
+
+  getControllerName(controllerId: string): string {
+    return this._translationService.translate(controllerId);
   }
 }
