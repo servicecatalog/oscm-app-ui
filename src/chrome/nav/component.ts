@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {ConfigurationService} from '../../common/services/api/configuration';
 
 class Link {
   public icon: string;
@@ -30,8 +31,10 @@ class Link {
     ]),
   ],
 })
-export class NavComponent {
+export class NavComponent implements OnInit {
   public collapsed = false;
+
+  constructor(private _configurationService: ConfigurationService) {}
 
   adminLinks: Link[] = [
     new Link('config', 'Config', 'build'),
@@ -39,13 +42,39 @@ export class NavComponent {
   ];
 
   controllerLinks: Link[] = [
-    new Link('controllers/ess.aws', 'AWS', 'extension'),
-    new Link('controllers/ess.azure', 'Azure', 'extension'),
-    new Link('controllers/ess.openstack', 'OpenStack', 'extension'),
-    new Link('controllers/ess.vmware', 'VMware', 'extension')
+    // new Link('controllers/ess.aws', 'AWS', 'extension'),
+    // new Link('controllers/ess.azure', 'Azure', 'extension'),
+    // new Link('controllers/ess.openstack', 'OpenStack', 'extension'),
+    // new Link('controllers/ess.vmware', 'VMware', 'extension')
   ];
 
   toggle(): void {
     this.collapsed = !this.collapsed;
+  }
+
+  addControllerLink(controllerId: string) {
+    switch (controllerId) {
+      case 'ess.aws':
+        this.controllerLinks.push(new Link(`controllers/${controllerId}`, 'AWS', 'extension'));
+        break;
+      case 'ess.azure':
+        this.controllerLinks.push(new Link(`controllers/${controllerId}`, 'Azure', 'extension'));
+        break;
+      case 'ess.openstack':
+        this.controllerLinks.push(new Link(`controllers/${controllerId}`, 'OpenStack', 'extension'));
+        break;
+      case 'ess.vmware':
+        this.controllerLinks.push(new Link(`controllers/${controllerId}`, 'VMWare', 'extension'));
+        break;
+    }
+  }
+
+  ngOnInit(): void {
+    const orgId = '24tr1q3w';
+    this._configurationService.configurationsForOrg(orgId).subscribe(configurations => {
+      configurations.forEach(config => {
+        this.addControllerLink(config.controllerId);
+      })
+    });
   }
 }

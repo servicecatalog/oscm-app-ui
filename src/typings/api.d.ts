@@ -1,7 +1,5 @@
 export type ProvisioningStatus = 'WAITING_FOR_SYSTEM_CREATION' | 'COMPLETED';
 
-export type ControllerType = 'ess.vmware' | 'ess.openstack' | 'ess.azure' | 'ess.aws';
-
 export interface InstanceAttribute {
   id: number;
   key: string;

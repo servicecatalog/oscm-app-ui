@@ -26,6 +26,7 @@
       </a>
     </mat-nav-list>
 
+    <ng-container *ngIf="controllerLinks.length > 0">
     <mat-divider style="margin-left: 8px"></mat-divider>
     <div class="app-nav-header" *ngIf="!collapsed" style="white-space: nowrap">CONTROLLER CONFIGURATION</div>
     <mat-nav-list>
@@ -38,6 +39,7 @@
         <a matLine>{{ link.label }}</a>
       </a>
     </mat-nav-list>
+    </ng-container>
 
   </mat-sidenav>
   <mat-sidenav-content [ngClass]="{'app-collapsed': collapsed}">
