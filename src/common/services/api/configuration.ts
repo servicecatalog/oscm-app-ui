@@ -25,6 +25,10 @@ export class ConfigurationService extends BaseApi {
     return this._http.get<ConfigurationSettings[]>(`${this._url}/${id}/settings`);
   }
 
+  configurationsForOrg(orgId: string): Observable<Configuration[]> {
+    return this._http.get<Configuration[]>(`${this._url}`, {params: {organizationId: orgId}});
+  }
+
   create(config: Configuration): Observable<Configuration> {
     return this._http.post<Configuration>(this._url, config);
   }

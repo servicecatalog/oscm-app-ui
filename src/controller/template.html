@@ -1,21 +1,24 @@
 <app-card [initialized]="isInitialized">
-  <div title>{{controllerId}}</div>
+  <div title>{{controllerName}} Controller</div>
   <div content fxLayout="row wrap">
     <app-property>
       <div key>Configuration ID</div>
-      <div value>{{configuration.id}}</div>
+      <div value>{{configuration?.id}}</div>
     </app-property>
     <app-property>
       <div key>Description</div>
-      <div value>{{configuration.description}}</div>
+      <div value>
+        <ng-container *ngIf="configuration?.description?.length > 0; else empty">{{configuration?.description}}</ng-container>
+        <ng-template #empty>-</ng-template>
+      </div>
     </app-property>
     <app-property>
       <div key>Controller ID</div>
-      <div value>{{configuration.controllerId}}</div>
+      <div value>{{configuration?.controllerId}}</div>
     </app-property>
     <app-property>
       <div key>Organization ID</div>
-      <div value>{{configuration.organizationId}}</div>
+      <div value>{{configuration?.organizationId}}</div>
     </app-property>
     <app-property fxFlex="100">
       <div key>Configuration Settings</div>
