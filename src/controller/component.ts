@@ -3,6 +3,9 @@ import {ActivatedRoute} from '@angular/router';
 import {ConfigurationService} from '../common/services/api/configuration';
 import {Configuration, ConfigurationSettings} from 'typings/api';
 import {TranslationService} from '../common/services/translation';
+import {ConfigurationSettingService} from '../common/services/api/configurationsetting';
+import {MatDialog} from '@angular/material';
+import {ConfigurationSettingsDialogComponent} from './settingdialog/dialog';
 
 @Component({
   selector: 'app-controller',
@@ -12,6 +15,7 @@ export class ControllerComponent implements OnInit, OnDestroy {
   controllerName: string;
   configuration: Configuration;
   configurationSettings: ConfigurationSettings[];
+  editable = true;
 
   isInitialized = false;
 
@@ -21,6 +25,8 @@ export class ControllerComponent implements OnInit, OnDestroy {
 
   constructor(private _route: ActivatedRoute,
               private _configurationService: ConfigurationService,
+              private _configurationSettingService: ConfigurationSettingService,
+              private _matDialog: MatDialog,
               private _translationService: TranslationService) {
   }
 
@@ -36,7 +42,7 @@ export class ControllerComponent implements OnInit, OnDestroy {
         this.configurationsObservable.unsubscribe();
       }
       this.configurationsObservable = this._configurationService.configurationsForOrg(organizationId).subscribe(configurations => {
-        const config = this.findConfiguration(params.controllerId, configurations);
+        const config = this._findConfiguration(params.controllerId, configurations);
         if (config === undefined) {
           return;
         }
@@ -57,7 +63,7 @@ export class ControllerComponent implements OnInit, OnDestroy {
     });
   }
 
-  findConfiguration(controllerId: string, configurations: Configuration[]): Configuration | undefined {
+  private _findConfiguration(controllerId: string, configurations: Configuration[]): Configuration | undefined {
     let result: Configuration;
 
     configurations.forEach(config => {
@@ -67,6 +73,28 @@ export class ControllerComponent implements OnInit, OnDestroy {
     });
 
     return result;
+  }
+
+  remove(configSetting: ConfigurationSettings): void {
+    console.log('remove');
+    console.log(configSetting);
+    this._configurationSettingService.remove(`${this.configuration.id}`, configSetting).subscribe(ignored => {
+      this.configurationSettings = this.configurationSettings.filter(config => {
+        return config.id !== configSetting.id;
+      });
+    });
+  }
+
+  create(): void {
+    this._matDialog.open(ConfigurationSettingsDialogComponent);
+  }
+
+  edit(configSetting: ConfigurationSettings): void {
+    this._matDialog.open(ConfigurationSettingsDialogComponent);
+  }
+
+  toggleEditMode() {
+    this.editable = !this.editable;
   }
 
   // /configurations/{configurationId}/settings

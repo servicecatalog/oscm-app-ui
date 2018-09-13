@@ -1,0 +1,32 @@
+<form [formGroup]="form" (ngSubmit)="submit(form)">
+  <h2 mat-dialog-title>... configuration setting</h2>
+  <mat-dialog-content>
+    <div>Provide key and value to ... configuration setting:</div>
+    <div style="padding-top: 8px">
+      <mat-form-field>
+        <input matInput
+               placeholder="Key"
+               formControlName="key"
+               required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               placeholder="Value"
+               formControlName="value"
+               required>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button
+            type="submit"
+            color="primary"
+            [disabled]="!form.valid">Save
+    </button>
+    <button mat-button
+            type="button"
+            color="primary"
+            mat-dialog-close>Cancel
+    </button>
+  </mat-dialog-actions>
+</form>

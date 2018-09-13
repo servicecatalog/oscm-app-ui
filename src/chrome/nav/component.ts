@@ -43,12 +43,7 @@ export class NavComponent implements OnInit {
     new Link('instances', 'Instances', 'cloud'),
   ];
 
-  controllerLinks: Link[] = [
-    // new Link('controllers/ess.aws', 'AWS', 'extension'),
-    // new Link('controllers/ess.azure', 'Azure', 'extension'),
-    // new Link('controllers/ess.openstack', 'OpenStack', 'extension'),
-    // new Link('controllers/ess.vmware', 'VMware', 'extension')
-  ];
+  controllerLinks: Link[] = [];
 
   toggle(): void {
     this.collapsed = !this.collapsed;

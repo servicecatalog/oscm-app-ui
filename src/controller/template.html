@@ -1,5 +1,5 @@
 <app-card [initialized]="isInitialized">
-  <div title>{{controllerName}} Controller</div>
+  <div title fxLayout="row">{{controllerName}} Controller</div>
   <div content fxLayout="row wrap">
     <app-property>
       <div key>Configuration ID</div>
@@ -8,7 +8,8 @@
     <app-property>
       <div key>Description</div>
       <div value>
-        <ng-container *ngIf="configuration?.description?.length > 0; else empty">{{configuration?.description}}</ng-container>
+        <ng-container *ngIf="configuration?.description?.length > 0; else empty">{{configuration?.description}}
+        </ng-container>
         <ng-template #empty>-</ng-template>
       </div>
     </app-property>
@@ -23,7 +24,19 @@
     <app-property fxFlex="100">
       <div key>Configuration Settings</div>
       <div value>
-        <app-chips [list]="configurationSettings"></app-chips>
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let config of configurationSettings"
+                    [selectable]="true"
+                    [removable]="true"
+                    (removed)="remove(config)"
+                    (click)="edit(config)">
+            {{ config.key }}: {{ config.value }}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+          <mat-chip (click)="create()" style="height: 32px;">
+            <mat-icon>add</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
       </div>
     </app-property>
   </div>
