@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {animate, state, style, transition, trigger} from "@angular/animations";
+import {animate, state, style, transition, trigger} from '@angular/animations';
 import {ConfigurationService} from '../../common/services/api/configuration';
+import {delay, repeatWhen} from 'rxjs/operators';
 
 class Link {
   public icon: string;
@@ -34,7 +35,8 @@ class Link {
 export class NavComponent implements OnInit {
   public collapsed = false;
 
-  constructor(private _configurationService: ConfigurationService) {}
+  constructor(private _configurationService: ConfigurationService) {
+  }
 
   adminLinks: Link[] = [
     new Link('config', 'Config', 'build'),
@@ -71,10 +73,13 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     const orgId = '24tr1q3w';
-    this._configurationService.configurationsForOrg(orgId).subscribe(configurations => {
-      configurations.forEach(config => {
-        this.addControllerLink(config.controllerId);
-      })
-    });
+    this._configurationService.configurationsForOrg(orgId)
+      .pipe(repeatWhen(completed => completed.pipe(delay(1000))))
+      .subscribe(configurations => {
+        this.controllerLinks = [];
+        configurations.forEach(config => {
+          this.addControllerLink(config.controllerId);
+        });
+      });
   }
 }
