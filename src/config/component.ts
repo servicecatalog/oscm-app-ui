@@ -77,6 +77,22 @@ export class ConfigComponent implements OnInit {
       });
   }
 
+  remove(controllerId: string, config: Configuration): void {
+    console.log('remove ' + controllerId + ' from ' + config);
+    // this._configurationService.remove(config).subscribe(ignored => {
+      this.configurations.forEach(c => {
+        if(c.organizationId === config.organizationId) {
+          console.log("filtering ")
+          console.log(c)
+          c.controllers = c.controllers.filter(ctrl => {
+            return ctrl !== controllerId;
+          })
+          console.log(c)
+        }
+      });
+    // });
+  }
+
   toControllerName(controllerId: string) {
     return this._translationService.translate(controllerId);
   }

@@ -9,9 +9,15 @@
       <ng-container matColumnDef="controllers">
         <th mat-header-cell *matHeaderCellDef>Configured controllers</th>
         <td mat-cell *matCellDef="let configuration">
-          <ng-container *ngFor="let controllerId of configuration?.controllers; last as last">
-            {{ toControllerName(controllerId) }}<ng-container *ngIf="!last">,</ng-container>
-          </ng-container>
+          <mat-chip-list *ngIf="configuration?.controllers?.length > 0">
+            <mat-chip *ngFor="let elem of configuration?.controllers"
+                      [selectable]="true"
+                      [removable]="true"
+                      (removed)="remove(elem, configuration)">
+              {{ toControllerName(elem) }}
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="['organization', 'controllers']"></tr>

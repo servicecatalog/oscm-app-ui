@@ -96,6 +96,7 @@ export class ControllerComponent implements OnInit, OnDestroy {
   toggleEditMode() {
     this.editable = !this.editable;
   }
+  
 
   // /configurations/{configurationId}/settings
 

@@ -32,4 +32,9 @@ export class ConfigurationService extends BaseApi {
   create(config: Configuration): Observable<Configuration> {
     return this._http.post<Configuration>(this._url, config);
   }
+
+  remove(config: Configuration): Observable<Configuration> {
+    // todo fix path
+    return this._http.delete<Configuration>(`${this._url}/${config.id}`);
+  }
 }
