@@ -16,7 +16,6 @@ export class ControllerComponent implements OnInit, OnDestroy {
   configuration: Configuration;
   configurationSettings: ConfigurationSettings[];
   editable = true;
-
   isInitialized = false;
 
   private parametersObservable: any;
@@ -76,8 +75,6 @@ export class ControllerComponent implements OnInit, OnDestroy {
   }
 
   remove(configSetting: ConfigurationSettings): void {
-    console.log('remove');
-    console.log(configSetting);
     this._configurationSettingService.remove(`${this.configuration.id}`, configSetting).subscribe(ignored => {
       this.configurationSettings = this.configurationSettings.filter(config => {
         return config.id !== configSetting.id;
@@ -86,19 +83,49 @@ export class ControllerComponent implements OnInit, OnDestroy {
   }
 
   create(): void {
-    this._matDialog.open(ConfigurationSettingsDialogComponent);
+    this._matDialog.open(ConfigurationSettingsDialogComponent, {
+      width: '600px',
+      data: {action: 'Create'}
+    }).afterClosed()
+      .subscribe(newConfigSetting => {
+        if (!newConfigSetting) {
+          return;
+        }
+
+        this._configurationSettingService.create(`${this.configuration.id}`, newConfigSetting)
+          .subscribe(createdConfigSetting => {
+            this.configurationSettings.push(createdConfigSetting);
+          });
+      });
   }
 
   edit(configSetting: ConfigurationSettings): void {
-    this._matDialog.open(ConfigurationSettingsDialogComponent);
+    this._matDialog.open(ConfigurationSettingsDialogComponent, {
+      width: '600px',
+      data: {action: 'Edit', key: configSetting.key, value: configSetting.value}
+    }).afterClosed()
+      .subscribe(updatedConfigSettings => {
+        if (!updatedConfigSettings) {
+          return;
+        }
+
+        updatedConfigSettings.id = configSetting.id;
+        this._configurationSettingService.update(`${this.configuration.id}`, updatedConfigSettings)
+          .subscribe(ignored => {
+            this.configurationSettings.forEach(config => {
+              if (config.id === configSetting.id) {
+                config.key = updatedConfigSettings.key;
+                config.value = updatedConfigSettings.value;
+              }
+            });
+          });
+      });
   }
 
   toggleEditMode() {
     this.editable = !this.editable;
   }
   
-
-  // /configurations/{configurationId}/settings
 
   ngOnDestroy() {
     if (this.parametersObservable != null) {

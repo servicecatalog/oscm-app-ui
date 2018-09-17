@@ -16,4 +16,12 @@ export class ConfigurationSettingService extends BaseApi {
   remove(configId: string, configSettings: ConfigurationSettings): Observable<ConfigurationSettings> {
     return this._http.delete<ConfigurationSettings>(`${this._url}/${configId}/settings/${configSettings.id}`);
   }
+
+  create(configId: string, configSettings: ConfigurationSettings): Observable<ConfigurationSettings> {
+    return this._http.post<ConfigurationSettings>(`${this._url}/${configId}/settings`, configSettings);
+  }
+
+  update(configId: string, configSettings: ConfigurationSettings): Observable<ConfigurationSettings> {
+    return this._http.put<ConfigurationSettings>(`${this._url}/${configId}/settings/${configSettings.id}`, configSettings);
+  }
 }

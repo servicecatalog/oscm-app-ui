@@ -31,11 +31,6 @@ import { ControllerModule } from 'controller/module';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: DelayInterceptor,
-      multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
       multi: true
     }
