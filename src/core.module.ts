@@ -4,15 +4,14 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router';
+import {ControllerModule} from 'controller/module';
 import {ChromeComponent} from './chrome/component';
 import {ChromeModule} from './chrome/module';
-import {DelayInterceptor} from './common/services/delay.interceptor';
 import {HttpErrorInterceptor} from './common/services/error.interceptor';
 import {ConfigModule} from './config/module';
 import {HomeModule} from './home/module';
 import {InstancesModule} from './instances/module';
 import {routes} from './router.config';
-import { ControllerModule } from 'controller/module';
 
 @NgModule({
   declarations: [],
