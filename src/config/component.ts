@@ -86,8 +86,8 @@ export class ConfigComponent implements OnInit {
      this._configurationService.remove(controller.configId).subscribe(ignored => {
       this.configurations.forEach((c, idx, obj) => {
         if(c.organizationId === config.organizationId) {
-          c.controllers = c.controllers.filter(ctrl => {
-            return ctrl !== controller;
+          c.controllers = c.controllers.filter(filtered => {
+            return filtered !== controller;
           })
           
           //Remove whole entry when there are no controllers left
