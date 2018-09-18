@@ -8,7 +8,12 @@ import {CreateConfigDialogComponent} from './create/dialog';
 
 class ConfigurationView {
   organizationId: string;
-  controllers: string[];
+  controllers: ControllerView[];
+}
+
+class ControllerView {
+  configId: number;
+  id: string;
 }
 
 @Component({
@@ -56,10 +61,10 @@ export class ConfigComponent implements OnInit {
     if (idx < 0) {
       this.configurations.push({
         organizationId: config.organizationId,
-        controllers: [config.controllerId],
+        controllers: [{id: config.controllerId, configId: config.id}],
       } as ConfigurationView);
     } else {
-      this.configurations[idx].controllers.push(config.controllerId);
+      this.configurations[idx].controllers.push({id: config.controllerId, configId: config.id});
     }
 
     this.dataSource.data = this.configurations;
@@ -77,23 +82,25 @@ export class ConfigComponent implements OnInit {
       });
   }
 
-  remove(controllerId: string, config: Configuration): void {
-    console.log('remove ' + controllerId + ' from ' + config);
-    // this._configurationService.remove(config).subscribe(ignored => {
-      this.configurations.forEach(c => {
+  remove(controller: ControllerView, config: ConfigurationView): void {
+     this._configurationService.remove(controller.configId).subscribe(ignored => {
+      this.configurations.forEach((c, idx, obj) => {
         if(c.organizationId === config.organizationId) {
-          console.log("filtering ")
-          console.log(c)
           c.controllers = c.controllers.filter(ctrl => {
-            return ctrl !== controllerId;
+            return ctrl !== controller;
           })
-          console.log(c)
+          
+          //Remove whole entry when there are no controllers left
+          if (c.controllers.length < 1) {
+            obj.splice(idx, 1);
+            this.dataSource.data = this.configurations;
+          }
         }
       });
-    // });
+     });
   }
 
-  toControllerName(controllerId: string) {
-    return this._translationService.translate(controllerId);
+  toControllerName(controller: ControllerView) {
+    return this._translationService.translate(controller.id);
   }
 }

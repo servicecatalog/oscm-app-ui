@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, config} from 'rxjs';
 import {Configuration, ConfigurationSettings} from '../../../typings/api';
 import {ServicesModule} from '../module';
 import {BaseApi} from './api';
@@ -33,8 +33,7 @@ export class ConfigurationService extends BaseApi {
     return this._http.post<Configuration>(this._url, config);
   }
 
-  remove(config: Configuration): Observable<Configuration> {
-    // todo fix path
-    return this._http.delete<Configuration>(`${this._url}/${config.id}`);
+  remove(configId: number): Observable<Configuration> {
+    return this._http.delete<Configuration>(`${this._url}/${configId}`);
   }
 }
