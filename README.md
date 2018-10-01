@@ -1,8 +1,8 @@
-# oscm-app-ui
+# oscm-cm-ui
 
 ## Build status
 
-[![Build status](https://travis-ci.org/servicecatalog/oscm-app-ui.svg?branch=master)](https://travis-ci.org/servicecatalog/oscm-app-ui)
+[![Build status](https://travis-ci.org/servicecatalog/oscm-cm-ui.svg?branch=master)](https://travis-ci.org/servicecatalog/oscm-cm-ui)
 
 ## Development server
 
