@@ -13,7 +13,7 @@ export class TranslationService {
   ]);
 
   translate(input: string): string {
-    if(this._translationMap.has(input)) {
+    if (this._translationMap.has(input)) {
       return this._translationMap.get(input);
     }
 

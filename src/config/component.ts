@@ -85,12 +85,12 @@ export class ConfigComponent implements OnInit {
   remove(controller: ControllerView, config: ConfigurationView): void {
      this._configurationService.remove(controller.configId).subscribe(ignored => {
       this.configurations.forEach((c, idx, obj) => {
-        if(c.organizationId === config.organizationId) {
+        if (c.organizationId === config.organizationId) {
           c.controllers = c.controllers.filter(filtered => {
             return filtered !== controller;
-          })
-          
-          //Remove whole entry when there are no controllers left
+          });
+
+          // Remove whole entry when there are no controllers left
           if (c.controllers.length < 1) {
             obj.splice(idx, 1);
             this.dataSource.data = this.configurations;

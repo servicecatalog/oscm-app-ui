@@ -14,7 +14,8 @@ export class InstancesComponent implements OnInit {
 
   isInitialized = false;
 
-  displayedColumns: string[] = ['instanceId', 'subscriptionId', 'controllerId', 'organizationName', 'organizationId', 'status', 'requestTime'];
+  displayedColumns: string[] = ['instanceId', 'subscriptionId', 'controllerId', 'organizationName', 'organizationId',
+    'status', 'requestTime'];
   dataSource: MatTableDataSource<Instance>;
 
   instances: Instance[] = [];

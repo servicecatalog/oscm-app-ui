@@ -125,7 +125,6 @@ export class ControllerComponent implements OnInit, OnDestroy {
   toggleEditMode() {
     this.editable = !this.editable;
   }
-  
 
   ngOnDestroy() {
     if (this.parametersObservable != null) {
